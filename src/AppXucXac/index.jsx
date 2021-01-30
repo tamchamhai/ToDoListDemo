@@ -102,6 +102,31 @@ export default class AppXucXac extends Component {
       tongSoBanChoi,
     });
   };
+
+  // choiGame
+  choiGame = () => {
+    let i = 0;
+    // sau khoảng thời gian cho trước thì chạy lại hàm
+    const couter = setInterval(() => {
+      // Animate scroll cube
+      const newKetQuaXucXac = [
+        this.xucXacMau[getRandomInt(6)],
+        this.xucXacMau[getRandomInt(6)],
+        this.xucXacMau[getRandomInt(6)],
+      ];
+      this.setState({
+        ketQuaXucXac: newKetQuaXucXac,
+      });
+      // Điều kiện dừng cube
+      i += 1;
+      if (i == 10) {
+        clearInterval(couter);
+        // tính kết quả
+        this.xuLyKetQua();
+      }
+    }, 100);
+  };
+
   render() {
     return (
       <div
@@ -128,7 +153,7 @@ export default class AppXucXac extends Component {
             tongSoBanChoi={this.state.tongSoBanChoi}
             soBanThang={this.state.soBanThang}
           />
-          <BtnChoi xuLyKetQua={this.xuLyKetQua} />
+          <BtnChoi xuLyKetQua={this.xuLyKetQua} choiGame={this.choiGame} />
         </div>
       </div>
     );

@@ -3,9 +3,10 @@ import React, { Component } from "react";
 export default class BtnChoi extends Component {
   xuLyChoiGame = () => {
     // Nhận lại prop
-    const { xuLyKetQua } = this.props;
+    const { xuLyKetQua, choiGame } = this.props;
     // gọi xuLyChoiGame
-    xuLyKetQua();
+    // xuLyKetQua();
+    choiGame();
   };
   render() {
     return (

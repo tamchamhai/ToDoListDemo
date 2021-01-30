@@ -1,0 +1,10 @@
+/* // định nghĩa font */
+@font-face {
+  font-family: fontxucxac;
+  src: url(./Pony.ttf);
+}
+
+/* // dùng font đã định nghĩa */
+.gameXucXac {
+  font-family: fontxucxac;
+}

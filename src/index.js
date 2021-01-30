@@ -9,11 +9,21 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import "../node_modules/jquery/dist/jquery.min.js";
 import "../node_modules/popper.js/dist/popper.min.js";
+// Redux
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./redux/reducers";
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   // nội dung đưa ra màn hình
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   // vị trí đưa ra màn hình
   document.getElementById("root")

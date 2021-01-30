@@ -11,7 +11,9 @@ import Props from "./props";
 import Glasses from "./glasses";
 import GlassesAdvenced from "./glasses-advenced/index.jsx";
 import AppXucXac from "./AppXucXac";
+import AppXucXacRedux from "./AppXucXacRedux";
 import AppXucXacPractice from "./AppXucXacPractice";
+import ShopingCart from "./ShopingCart";
 
 function App() {
   return (
@@ -32,7 +34,9 @@ function App() {
       {/* <Glasses /> */}
       {/* <GlassesAdvenced /> */}
       {/* <AppXucXac /> */}
-      <AppXucXacPractice />
+      <AppXucXacRedux />
+      {/* <AppXucXacPractice /> */}
+      {/* <ShopingCart /> */}
     </div>
   );
 }
