@@ -14,6 +14,7 @@ import AppXucXac from "./AppXucXac";
 import AppXucXacRedux from "./AppXucXacRedux";
 import AppXucXacPractice from "./AppXucXacPractice";
 import ShopingCart from "./ShopingCart";
+import UserManagement from "./UserManagement";
 
 function App() {
   return (
@@ -34,9 +35,10 @@ function App() {
       {/* <Glasses /> */}
       {/* <GlassesAdvenced /> */}
       {/* <AppXucXac /> */}
-      <AppXucXacRedux />
+      {/* <AppXucXacRedux /> */}
       {/* <AppXucXacPractice /> */}
-      {/* <ShopingCart /> */}
+      <ShopingCart />
+      {/* <UserManagement /> */}
     </div>
   );
 }

@@ -17,6 +17,7 @@ export default class ShopingCart extends Component {
       ram: "4 GB",
       rom: "256 GB",
       price: 7500000,
+      productAmount: 0,
     },
     {
       id: 2,
@@ -29,6 +30,7 @@ export default class ShopingCart extends Component {
       ram: "4 GB",
       rom: "64 GB",
       price: 11000000,
+      productAmount: 0,
     },
     {
       id: 3,
@@ -41,6 +43,7 @@ export default class ShopingCart extends Component {
       ram: "8 GB",
       rom: "256 GB",
       price: 25000000,
+      productAmount: 0,
     },
   ];
   state = {
@@ -54,31 +57,65 @@ export default class ShopingCart extends Component {
       mainCamera: "Chính 64 MP & Phụ 8 MP, 5 MP",
       ram: "4 GB",
       rom: "256 GB",
+      productAmount: 0,
     },
-    listProductCart: [],
+    cartList: [],
   };
+  // handle selected product
   handleShowDetails = (currentProduct) => {
     this.setState({
       currentProduct,
     });
   };
-  handleAddToCart = (listProductCart) => {
+
+  // handle add product to card
+  handleAddToCart = (item) => {
+    let { cartList } = this.state;
+    const index = cartList.findIndex((product) => product.id === item.id);
+    if (index === -1) {
+      // product not found
+      cartList = [...cartList, { ...item, productAmount: 1 }];
+    } else {
+      // product is founded
+      cartList[index].productAmount += 1;
+    }
     this.setState({
-      listProductCart,
+      cartList,
+    });
+    console.log(cartList);
+  };
+  handleDecreaseAmountProduct = (cartList) => {
+    this.setState({
+      cartList,
+    });
+  };
+  handleIncreaseAmountProduct = (cartList) => {
+    this.setState({
+      cartList,
+    });
+  };
+  handleDeleteProduct = (cartList) => {
+    this.setState({
+      cartList,
     });
   };
   render() {
     return (
       <section className="container">
         <h3 className="title text-center">Bài tập giỏ hàng</h3>
-        <Cart />
+        <Cart cartList={this.state.cartList} />
         <ListProduct
           ProductList={this.ProductList}
           handleShowDetails={this.handleShowDetails}
           handleAddToCart={this.handleAddToCart}
         />
         <ProductDetails currentProduct={this.state.currentProduct} />
-        <CartModel />
+        <CartModel
+          cartList={this.state.cartList}
+          handleDecreaseAmountProduct={this.handleDecreaseAmountProduct}
+          handleIncreaseAmountProduct={this.handleIncreaseAmountProduct}
+          handleDeleteProduct={this.handleDeleteProduct}
+        />
       </section>
     );
   }

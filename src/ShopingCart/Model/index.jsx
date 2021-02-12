@@ -1,6 +1,78 @@
 import React, { Component } from "react";
 
 export default class CartModel extends Component {
+  handleDecreaseAmountProduct = (index) => {
+    let { cartList } = this.props;
+    // let count = cartList[index].productAmount;
+    if (cartList[index].productAmount === 1) {
+      cartList.splice(index, 1);
+    } else {
+      cartList[index].productAmount--;
+    }
+    // Truyền props
+    this.props.handleDecreaseAmountProduct(cartList);
+  };
+  handleIncreaseAmountProduct = (index) => {
+    let { cartList } = this.props;
+    // let count = cartList[index].productAmount;
+    cartList[index].productAmount++;
+    // Truyền props
+    this.props.handleIncreaseAmountProduct(cartList);
+  };
+  handleDeleteProduct = (index) => {
+    let { cartList } = this.props;
+    cartList.splice(index, 1);
+    this.props.handleDeleteProduct(cartList);
+  };
+  renderCartList = () => {
+    const { cartList } = this.props;
+    console.log(cartList);
+    return cartList.map((item, index) => {
+      return (
+        <tr key={index}>
+          <th>{index + 1}</th>
+          <th>{item.model}</th>
+          <th>
+            <img src={item.src} width={50} />
+          </th>
+          <th>
+            <button
+              className="btn btn-danger"
+              onClick={() => this.handleDecreaseAmountProduct(index)}
+            >
+              -
+            </button>
+            {item.productAmount}
+            <button
+              className="btn btn-success"
+              onClick={() => this.handleIncreaseAmountProduct(index)}
+            >
+              +
+            </button>
+          </th>
+          <th>{item.price} vnd</th>
+          <th>{item.price * item.productAmount} vnd</th>
+          <th>
+            <button
+              className="btn btn-danger"
+              onClick={() => this.handleDeleteProduct(index)}
+            >
+              Delete
+            </button>
+          </th>
+        </tr>
+      );
+    });
+  };
+  handleTotalCost = () => {
+    const { cartList } = this.props;
+    let totalCost = 0;
+    cartList.map((item) => {
+      totalCost += item.price * item.productAmount;
+    });
+    console.log(totalCost);
+    return totalCost;
+  };
   render() {
     return (
       <div
@@ -40,8 +112,9 @@ export default class CartModel extends Component {
                     <th>Total Price</th>
                   </tr>
                 </thead>
-                <tbody />
+                <tbody>{this.renderCartList()}</tbody>
               </table>
+              <p>Total Cost: {this.handleTotalCost()} vnd</p>
             </div>
             <div className="modal-footer">
               <button

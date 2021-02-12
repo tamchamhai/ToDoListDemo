@@ -5,9 +5,10 @@ export default class ListProduct extends Component {
     this.props.handleShowDetails(item);
   };
   handleAddToCart = (item) => {
-    const listProductCart = { ...item };
-    this.props.handleAddToCart(listProductCart);
-    console.log(listProductCart);
+    // Truyền Props
+    // this.props.handleAddToCart(listProductCart);
+    const { handleAddToCart } = this.props;
+    handleAddToCart(item);
   };
   renderProductList = () => {
     const { ProductList } = this.props;
