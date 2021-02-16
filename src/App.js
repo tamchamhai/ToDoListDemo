@@ -15,6 +15,7 @@ import AppXucXacRedux from "./AppXucXacRedux";
 import AppXucXacPractice from "./AppXucXacPractice";
 import ShopingCart from "./ShopingCart";
 import UserManagement from "./UserManagement";
+import ShopingCartRedux from "./ShopingCartRedux";
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
       {/* <AppXucXac /> */}
       {/* <AppXucXacRedux /> */}
       {/* <AppXucXacPractice /> */}
-      <ShopingCart />
+      {/* <ShopingCart /> */}
+      <ShopingCartRedux />
       {/* <UserManagement /> */}
     </div>
   );
